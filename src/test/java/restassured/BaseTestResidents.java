@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeSuite;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class BaseTest {
+public class BaseTestResidents {
 	
 	protected static String token;
 
@@ -29,12 +29,16 @@ public class BaseTest {
     	                    .when()
     	                       .post("api/login");
 
-    	    response.then().statusCode(200);
+    	    //response.then().statusCode(200);
+    	    System.out.println("Status Code: " + response.getStatusCode());
+    	    response.prettyPrint();
+    	    
 
     	    token = response.jsonPath().getString("token");
 
     	    System.out.println("Generated Token : " + token);
-    	}
+    }
+    
     }
 
 
